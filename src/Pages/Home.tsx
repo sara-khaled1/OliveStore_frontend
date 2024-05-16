@@ -60,7 +60,7 @@ export function Home() {
 
       <Carousel className="w-full max-w-xs">
         <CarouselContent>
-          <h1 className="text-2xl uppercase mb-10">Products</h1>
+          <h1 className="text-1xl uppercase mb-10">Products</h1>
           {Array.from({ length: 10 }).map((_, index) => (
             <CarouselItem key={index}>
               <div className="p-1">
@@ -77,21 +77,17 @@ export function Home() {
         <CarouselNext />
       </Carousel>
 
-      <h1 className="text-2xl uppercase mb-10">Products</h1>
-
-      <section className="flex  flex-col md:flex-row gap-4 justify-between max-w-6xl mx-auto">
+      <h1 className="text-4xl uppercase mb-10">Products</h1>
+      <section className="flex  flex-col md:flex-row gap-4 justify-between max-w6xl mx-50">
         {data?.map((Product) => (
           <Card key={Product.id} className="w-[350px]">
             <CardHeader>
               <CardTitle>{Product.name}</CardTitle>
-              <p>{Product.price}</p>
-              <p>{Product.quantity}</p>
-              <image>{Product.image}</image>
-              <CardDescription>Some Description here</CardDescription>
+              <img src={Product.image} style={{ width: "90%", height: "240px" }}></img>
+              <p> price {Product.price}</p>
+              <p>quantity {Product.quantity}</p>
             </CardHeader>
-            <CardContent> 
-              <p>Card Content Here</p>
-            </CardContent>
+            <CardContent></CardContent>
             <CardFooter>
               <Button className="w-full">Add to cart</Button>
             </CardFooter>
