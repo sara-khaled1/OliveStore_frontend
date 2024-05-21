@@ -6,7 +6,7 @@ import { GlobalContext } from "../App"
 import { ShoppingCart } from "lucide-react"
 
 export function Cart() {
-  const context = useContext(GlobalContext)
+  const context =    useContext(GlobalContext)
   if (!context) throw Error("Context is missing")
 
   const { state, handleDeleteFromCart } = context
