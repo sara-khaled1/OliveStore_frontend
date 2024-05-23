@@ -6,6 +6,8 @@ import { Home } from "./Pages/Home"
 import { createContext, useState } from "react"
 import { Product } from "./types"
 import { ProductDetails } from "./Pages/ProductDetails"
+import { Login } from "./Pages/Login"
+import { Singnup } from "./Pages/Signup"
 
 const router = createBrowserRouter([
   {
@@ -19,7 +21,18 @@ const router = createBrowserRouter([
   {
     path:  "/products/:productId",
     element: <ProductDetails />
+  },
+  {
+    path:  "/login",
+    element: <Login/>
   }
+  ,
+
+  {
+    path:  "/signup",
+    element: <Singnup/>
+  }
+
 ])
 
 type GlobalContextType = {

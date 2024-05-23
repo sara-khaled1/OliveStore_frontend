@@ -55,7 +55,7 @@ export function Home() {
       </div>
 
       <h1 className="text-4xl uppercase mb-10">Products</h1>
-      <section className="flex  flex-col md:flex-row gap-4 justify-between max-w6xl mx-50">
+      <section className="grid grid-cols-4 gap-4 max-w6xl mx-50">
         {data?.length === 0 && <p>No products found ,Try searching </p>}
         {data?.map((product) => (
           <Card key={product.id} className="w-[350px]">

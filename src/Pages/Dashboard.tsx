@@ -41,7 +41,7 @@ export function Dashboard() {
     queryClient.invalidateQueries({ queryKey: ["Product"] })
   }
 
-  const  postProduct=  async ()=> {
+  const postProduct = async () => {
     try {
       const res = await api.post("/products", product)
       return res.data
@@ -51,7 +51,7 @@ export function Dashboard() {
     }
   }
 
-  const   deleteProduct = async ( id: string)=> {
+  const deleteProduct = async (id: string) => {
     try {
       const res = await api.delete(`/products/${id}`)
       return res.data
@@ -61,11 +61,9 @@ export function Dashboard() {
     }
   }
 
-  const handleDeleteProduct =async(id:string)=>{
-
+  const handleDeleteProduct = async (id: string) => {
     await deleteProduct(id)
     queryClient.invalidateQueries({ queryKey: ["Product"] })
-
   }
 
   const getProducts = async () => {
@@ -139,47 +137,37 @@ export function Dashboard() {
         </div>
       </form>
 
-      <Table>
+      <Table className="text-center">
         <TableCaption>A list of products.</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]"></TableHead>
             <TableHead>Name</TableHead>
             <TableHead>Price</TableHead>
             <TableHead>quantity</TableHead>
             <TableHead>CategryId</TableHead>
             <TableHead></TableHead>
-
-
-
-
           </TableRow>
         </TableHeader>
         <TableBody>
           {products?.map((product) => (
             <TableRow key={product.id}>
-              <TableCell className="texe-left">{product.name}</TableCell>
-              <TableCell className="texe-left">{product.price}</TableCell>
-              <TableCell className="texe-left">{product.quantity}</TableCell>
-              <TableCell className="texe-left">{product.categoryId}</TableCell>
-              
-              <TableCell className="texe-left">
-                <Button 
-                variant="destructive"
-                 onClick={()=>handleDeleteProduct(product.id)} >
-                  X</Button>
-                  
-              </TableCell>
-              <TableCell className="texe-left">
-                <EditDialog product={product} />
-                </TableCell>
+              <TableCell className="text-left">{product.name}</TableCell>
+              <TableCell className="text-left">{product.price}</TableCell>
+              <TableCell className="text-left">{product.quantity}</TableCell>
+              <TableCell className="text-left">{product.categoryId}</TableCell>
 
+              <TableCell className="text-left">
+                <Button variant="destructive" onClick={() => handleDeleteProduct(product.id)}>
+                  X
+                </Button>
+              </TableCell>
+              <TableCell className="text-left">
+                <EditDialog product={product} />
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
-        <TableFooter>
-          
-        </TableFooter>
+        <TableFooter></TableFooter>
       </Table>
     </>
   )
