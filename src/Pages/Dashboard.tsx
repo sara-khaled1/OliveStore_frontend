@@ -15,11 +15,13 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table"
-import { Product } from "@/types"
+import { Product, User } from "@/types"
 import { EditDialog } from "@/components/editDialog"
+import { NavBar } from "@/components/navbar"
 
 export function Dashboard() {
   const queryClient = useQueryClient()
+
   const [product, setProduct] = useState({
     name: "",
     categoryId: "",
@@ -28,6 +30,7 @@ export function Dashboard() {
     price: 0,
     description: ""
   })
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setProduct({
@@ -56,7 +59,6 @@ export function Dashboard() {
       const res = await api.delete(`/products/${id}`)
       return res.data
     } catch (error) {
-      console.error(error)
       return Promise.reject(new Error("Something went wrong"))
     }
   }
@@ -75,12 +77,31 @@ export function Dashboard() {
       return Promise.reject(new Error("Something went wrong"))
     }
   }
+  const getUsers = async () => {
+    try {
+      const token = localStorage.getItem("token")
+      const res = await api.get("/users", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      return res.data
+    } catch (error) {
+      console.error(error)
+      return Promise.reject(new Error("Something went wrong"))
+    }
+  }
   const { data: products, error } = useQuery<Product[]>({
     queryKey: ["Product"],
     queryFn: getProducts
   })
+  const { data: users, error: userError } = useQuery<User[]>({
+    queryKey: ["users"],
+    queryFn: getUsers
+  })
   return (
     <>
+      <NavBar />
       <form className="mt-20 w-1/2 mx-auto" onSubmit={handleSubmit}>
         <h3 className="text-4xl uppercase mb-10"> Add New Products</h3>
         <Input
@@ -172,4 +193,5 @@ export function Dashboard() {
     </>
   )
 }
+
 export default Dashboard

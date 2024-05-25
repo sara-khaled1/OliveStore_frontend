@@ -2,8 +2,11 @@ import api from "@/api"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ChangeEvent, FormEvent, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 export function Singnup() {
+  const navigate = useNavigate()
+
   const [user, setUser] = useState({
     fullName: "",
     email: "",
@@ -33,7 +36,10 @@ export function Singnup() {
   }
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    await handlSigup()
+    const response = await handlSigup()
+    if (response) {
+      navigate("/login")
+    }
   }
 
   return (

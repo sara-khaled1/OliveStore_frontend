@@ -1,9 +1,18 @@
+import { GlobalContext } from "@/App"
 import api from "@/api"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { ChangeEvent, FormEvent, useState } from "react"
+import { ChangeEvent, FormEvent, useContext, useState } from "react"
+import { useNavigate } from "react-router-dom"
+import jwt from "jwt-decode"
+import { reshapeUser } from "@/lib/utils"
 
 export function Login() {
+  const navigate = useNavigate()
+  const context = useContext(GlobalContext)
+  if (!context) throw Error("Context is missing")
+  const { handlStoreUser } = context
+
   const [user, setUser] = useState({
     email: "",
     password: ""
@@ -16,11 +25,6 @@ export function Login() {
       [name]: value
     })
   }
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault()
-    const token = await handlLogin()
-    localStorage.setItem("token",token)
-  }
 
   const handlLogin = async () => {
     try {
@@ -32,6 +36,22 @@ export function Login() {
       return Promise.reject(new Error("Something went wrong"))
     }
   }
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault()
+
+    const token = await handlLogin()
+    if (token) {
+      const decodedToken = jwt(token)
+      const user = reshapeUser(decodedToken)
+      localStorage.setItem("token", token)
+      localStorage.setItem("user",  JSON.stringify(user))
+
+      handlStoreUser(user)
+      navigate("/")
+    }
+  }
+
   return (
     <div>
       <h3>Login</h3>
