@@ -102,6 +102,7 @@ export function Dashboard() {
   return (
     <>
       <NavBar />
+
       <form className="mt-20 w-1/2 mx-auto" onSubmit={handleSubmit}>
         <h3 className="text-4xl uppercase mb-10"> Add New Products</h3>
         <Input
@@ -157,9 +158,10 @@ export function Dashboard() {
           </Button>
         </div>
       </form>
+      <h3 className="text-2xl font-medium mb-4 mt-7">A List Of Products</h3>
 
       <Table className="text-center">
-        <TableCaption>A list of products.</TableCaption>
+        <TableCaption></TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead>Name</TableHead>

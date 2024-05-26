@@ -40,6 +40,16 @@ export function NavBar() {
               <NavigationMenuLink>Home</NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link to="/">
+              <NavigationMenuLink> Contact Us</NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link to="/about">
+              <NavigationMenuLink>About Us</NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
           {state.user?.role === ROLE.Admin && (
             <NavigationMenuItem>
               <Link to="/dashboard">
@@ -47,7 +57,6 @@ export function NavBar() {
               </Link>
             </NavigationMenuItem>
           )}
-
           {!state.user && (
             <NavigationMenuItem>
               <Link to="/signup">

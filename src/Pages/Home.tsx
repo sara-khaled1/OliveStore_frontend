@@ -8,6 +8,9 @@ import { ChangeEvent, useContext, useState } from "react"
 import { NavBar } from "@/components/navbar"
 import { Link, useSearchParams } from "react-router-dom"
 import { Input } from "@/components/ui/input"
+import { Footer } from "@/components/footer"
+import { Hero } from "@/components/hero"
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 export function Home() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -47,6 +50,7 @@ export function Home() {
   return (
     <>
       <NavBar />
+      <Hero/>
       <div>
         <form className=" flex gap-4 w-full md:1/2 mx-auto mb-10" onSubmit={handleSearch}>
           <Input type="search" placeholder="Search for a products" onChange={handleChange} />
@@ -55,7 +59,22 @@ export function Home() {
       </div>
 
       <h1 className="text-4xl uppercase mb-10">Products</h1>
-      <section className="grid grid-cols-4 gap-4 max-w6xl mx-50">
+      <Select>
+      <SelectTrigger className="w-[180px]">
+        <SelectValue placeholder="Select a fruit" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectGroup>
+          <SelectLabel>Fruits</SelectLabel>
+          <SelectItem value="apple">Apple</SelectItem>
+          <SelectItem value="banana">Banana</SelectItem>
+          <SelectItem value="blueberry">Blueberry</SelectItem>
+          <SelectItem value="grapes">Grapes</SelectItem>
+          <SelectItem value="pineapple">Pineapple</SelectItem>
+        </SelectGroup>
+      </SelectContent>
+    </Select>
+      <section className=" mt-16 grid grid-cols-4 gap-4 max-w6xl mx-50">
         {data?.length === 0 && <p>No products found ,Try searching </p>}
         {data?.map((product) => (
           <Card key={product.id} className="w-[350px]">
@@ -79,6 +98,10 @@ export function Home() {
         ))}
       </section>
       {error && <p className="text-red-500">{error.message}</p>}
+
+      <Footer/>
+
     </>
+
   )
 }

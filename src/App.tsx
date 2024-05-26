@@ -9,6 +9,8 @@ import { ProductDetails } from "./Pages/ProductDetails"
 import { Login } from "./Pages/Login"
 import { Singnup } from "./Pages/Signup"
 import { PrivateRoute } from "./components/privateRoute"
+import About from "./Pages/AboutUs"
+
 
 const router = createBrowserRouter([
   {
@@ -28,13 +30,21 @@ const router = createBrowserRouter([
     element: <ProductDetails />
   },
   {
+    path: "/about",
+    element: <About />
+  },
+  {
     path: "/login",
     element: <Login />
   },
   {
     path: "/signup",
     element: <Singnup />
-  }
+
+    
+  } ,
+
+
 ])
 
 type GlobalContextType = {
@@ -42,7 +52,8 @@ type GlobalContextType = {
   handleAddToCart: (product: Product) => void
   handleDeleteFromCart: (id: string) => void
   handlStoreUser: (user: DecodedUser) => void
-  handleRemoveUser:()=>void
+  handleRemoveUser: () => void
+  handleRemoveCart: () => void
 }
 
 type GlobalState = {
@@ -67,10 +78,15 @@ function App() {
   //     })
   //   }
   // }, [])
-
+  const handleRemoveCart = () => {
+    setState({
+      ...state,
+      cart: []
+    })
+  }
   const handleAddToCart = (product: Product) => {
-    const isDuplicated = state.cart.find((cartItem) => cartItem.id !== product.id)
-    if (isDuplicated) return
+    // const isDuplicated = state.cart.find((cartItem) => cartItem.id !== product.id)
+    // if (isDuplicated) return
     setState({
       ...state,
       cart: [...state.cart, product]
@@ -78,11 +94,13 @@ function App() {
   }
 
   const handleDeleteFromCart = (id: string) => {
-    const filteredCart = state.cart.filter((item) => item.id !== id)
+    const cart = state.cart
+    const index = cart.findIndex((item) => item.id === id)
+    cart.splice(index, 1)
 
     setState({
       ...state,
-      cart: filteredCart
+      cart: cart
     })
   }
 
@@ -101,9 +119,16 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App p-10">
       <GlobalContext.Provider
-        value={{ state, handleAddToCart, handleDeleteFromCart, handlStoreUser,handleRemoveUser }}
+        value={{
+          state,
+          handleAddToCart,
+          handleDeleteFromCart,
+          handlStoreUser,
+          handleRemoveUser,
+          handleRemoveCart
+        }}
       >
         <RouterProvider router={router} />
       </GlobalContext.Provider>
