@@ -30,6 +30,12 @@ export function Dashboard() {
     price: 0,
     description: ""
   })
+  const [user, setUser] = useState({
+    fullName: "",
+    phone: 0,
+    email: "",
+    role: ""
+  })
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -37,7 +43,13 @@ export function Dashboard() {
       ...product,
       [name]: value
     })
+
+    setUser({
+      ...user,
+      [name]: value
+    })
   }
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     await postProduct()
@@ -50,6 +62,24 @@ export function Dashboard() {
       return res.data
     } catch (error) {
       console.error(error)
+      return Promise.reject(new Error("Something went wrong"))
+    }
+  }
+
+  const postUser = async () => {
+    try {
+      const res = await api.post("/users", user)
+      return res.data
+    } catch (error) {
+      console.error(error)
+      return Promise.reject(new Error("Something went wrong"))
+    }
+  }
+  const deleteUser = async (id: string) => {
+    try {
+      const res = await api.delete(`/users/${id}`)
+      return res.data
+    } catch (error) {
       return Promise.reject(new Error("Something went wrong"))
     }
   }
@@ -168,6 +198,8 @@ export function Dashboard() {
             <TableHead>Price</TableHead>
             <TableHead>quantity</TableHead>
             <TableHead>CategryId</TableHead>
+            <TableHead>name</TableHead>
+
             <TableHead></TableHead>
           </TableRow>
         </TableHeader>
@@ -178,7 +210,6 @@ export function Dashboard() {
               <TableCell className="text-left">{product.price}</TableCell>
               <TableCell className="text-left">{product.quantity}</TableCell>
               <TableCell className="text-left">{product.categoryId}</TableCell>
-
               <TableCell className="text-left">
                 <Button variant="destructive" onClick={() => handleDeleteProduct(product.id)}>
                   X

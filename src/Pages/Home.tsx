@@ -52,7 +52,7 @@ export function Home() {
       <NavBar />
       <Hero/>
       <div>
-        <form className=" flex gap-4 w-full md:1/2 mx-auto mb-10" onSubmit={handleSearch}>
+        <form className=" flex gap-4 w-full md:1/2 mx-auto mb-10"  onSubmit={handleSearch}>
           <Input type="search" placeholder="Search for a products" onChange={handleChange} />
           <Button type="submit">Search</Button>
         </form>
@@ -82,7 +82,7 @@ export function Home() {
               <CardTitle>{product.name}</CardTitle>
               <img src={product.image} style={{ width: "90%", height: "240px" }}></img>
               <p> price {product.price}</p>
-              <p>quantity {product.quantity}</p>
+              {/* <p>quantity {product.quantity}</p> */}
             </CardHeader>
             <CardContent></CardContent>
             <CardFooter className="flex justify-between">

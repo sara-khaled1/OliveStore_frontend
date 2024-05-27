@@ -37,37 +37,98 @@ export function NavBar() {
         <NavigationMenuList className="gap-4">
           <NavigationMenuItem>
             <Link to="/">
-              <NavigationMenuLink>Home</NavigationMenuLink>
+              <NavigationMenuLink
+                style={{
+                  fontWeight: "bold",
+                  fontSize: "30px",
+                  fontFamily: "Arial, sans-serif",
+                  color: "white"
+                }}
+              >
+                {" "}
+                Home{" "}
+              </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <Link to="/">
-              <NavigationMenuLink> Contact Us</NavigationMenuLink>
+              <NavigationMenuLink
+                style={{
+                  fontWeight: "bold",
+                  fontSize: "30px",
+                  fontFamily: "Arial, sans-serif",
+                  color: "white"
+                }}
+              >
+                {" "}
+                Contact Us
+              </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <Link to="/about">
-              <NavigationMenuLink>About Us</NavigationMenuLink>
+              <NavigationMenuLink
+                style={{
+                  fontWeight: "bold",
+                  fontSize: "30px",
+                  fontFamily: "Arial, sans-serif",
+                  color: "white"
+                }}
+              >
+                About Us
+              </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
           {state.user?.role === ROLE.Admin && (
-            <NavigationMenuItem>
+            <NavigationMenuItem
+              style={{
+                fontWeight: "bold",
+                fontSize: "30px",
+                fontFamily: "Arial, sans-serif",
+                color: "white"
+              }}
+            >
               <Link to="/dashboard">
                 <NavigationMenuLink>Dashboard</NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
           )}
           {!state.user && (
-            <NavigationMenuItem>
+            <NavigationMenuItem
+              style={{
+                fontWeight: "bold",
+                fontSize: "30px",
+                fontFamily: "Arial, sans-serif",
+                color: "white"
+              }}
+            >
               <Link to="/signup">
-                <NavigationMenuLink>Signup</NavigationMenuLink>
+                <NavigationMenuLink
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "30px",
+                    fontFamily: "Arial, sans-serif",
+                    color: "white"
+                  }}
+                >
+                  Signup
+                </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
           )}
           {!state.user && (
             <NavigationMenuItem>
               <Link to="/login">
-                <NavigationMenuLink>Login</NavigationMenuLink>
+                <NavigationMenuLink
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "30px",
+                    fontFamily: "Arial, sans-serif",
+                    color: "white"
+                  }}
+                >
+                  Login
+                </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
           )}

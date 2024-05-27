@@ -10,13 +10,18 @@ export type Product = {
 
 
 }
+export type Category = {
+  id: string
+  name: string
+  description: string
+}
 
 export type User ={
   id:string
   fullName: string
   phone:number 
   email: string
-  role: keyof typeof ROLE
+  role: string
   }
 
 export const ROLE ={

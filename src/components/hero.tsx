@@ -12,9 +12,25 @@ export function Hero() {
             src="/hero.jpg"
             width="550"
           />
-          <div className="flex flex-col justify-center space-y-4">
+          <img
+            alt="Hero"
+            className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
+            height="310"
+            src="/hero1.jpg"
+            width="550"
+          />
+
+          <div className="flex flex-col justify-center space-y-7">
             <div className="space-y-2">
-              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+              <h1
+                style={{
+                  fontWeight: "bold",
+
+                  fontFamily: "Arial, sans-serif",
+                  color: "white"
+                }}
+                className=" font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
+              >
                 Welcome to Olive
               </h1>
               <p className="max-w-[600px] md:text-xl">
@@ -22,7 +38,7 @@ export function Hero() {
                 offer premium quality olives and olive oil, grown and harvested using organic
                 farming practices.
               </p>
-              <Button type="submit">Get Prodcts</Button>
+              <Button>Get Prodcts</Button>
             </div>
             <div className="w-full max-w-sm space-y-2"></div>
           </div>

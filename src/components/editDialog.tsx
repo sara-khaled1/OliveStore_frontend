@@ -45,12 +45,12 @@ export function EditDialog({ product }: { product: Product }) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">Edit Profile</Button>
+        <Button variant="outline">Edit </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
-          <DialogDescription>Make changes to your profile here. Click</DialogDescription>
+          <DialogTitle>Edit </DialogTitle>
+          <DialogDescription>Make changes to your here. Click</DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">

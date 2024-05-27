@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import "./App.css"
 import Dashboard from "./Pages/Dashboard"
 import { Home } from "./Pages/Home"
-import { createContext, useEffect, useState } from "react"
+import { createContext,  useState } from "react"
 import { DecodedUser, Product } from "./types"
 import { ProductDetails } from "./Pages/ProductDetails"
 import { Login } from "./Pages/Login"
@@ -68,16 +68,7 @@ function App() {
     user: null
   })
 
-  // useEffect(() => {
-  //   const user = localStorage.getItem("user")
-  //   if (user) {
-  //     const decodedUser = JSON.parse(user)
-  //     setState({
-  //       ...state,
-  //       user: decodedUser
-  //     })
-  //   }
-  // }, [])
+  
   const handleRemoveCart = () => {
     setState({
       ...state,
@@ -85,8 +76,7 @@ function App() {
     })
   }
   const handleAddToCart = (product: Product) => {
-    // const isDuplicated = state.cart.find((cartItem) => cartItem.id !== product.id)
-    // if (isDuplicated) return
+    
     setState({
       ...state,
       cart: [...state.cart, product]

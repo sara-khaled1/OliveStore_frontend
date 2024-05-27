@@ -32,7 +32,7 @@ export function Cart() {
   }, 0)
 
   const checkoutOrder: OrderCheckout = {
-    addressId: "bdd08487-f801-4036-9f09-2bb038058773",
+    addressId: "09fa2693-dc58-445c-b2d0-15ee1742926c",
     items: []
   }
 
