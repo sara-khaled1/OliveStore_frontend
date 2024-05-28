@@ -66,23 +66,23 @@ export function Dashboard() {
     }
   }
 
-  const postUser = async () => {
-    try {
-      const res = await api.post("/users", user)
-      return res.data
-    } catch (error) {
-      console.error(error)
-      return Promise.reject(new Error("Something went wrong"))
-    }
-  }
-  const deleteUser = async (id: string) => {
-    try {
-      const res = await api.delete(`/users/${id}`)
-      return res.data
-    } catch (error) {
-      return Promise.reject(new Error("Something went wrong"))
-    }
-  }
+  // const postUser = async () => {
+  //   try {
+  //     const res = await api.post("/users", user)
+  //     return res.data
+  //   } catch (error) {
+  //     console.error(error)
+  //     return Promise.reject(new Error("Something went wrong"))
+  //   }
+  // }
+  // const deleteUser = async (id: string) => {
+  //   try {
+  //     const res = await api.delete(`/users/${id}`)
+  //     return res.data
+  //   } catch (error) {
+  //     return Promise.reject(new Error("Something went wrong"))
+  //   }
+  // }
 
   const deleteProduct = async (id: string) => {
     try {
@@ -134,7 +134,7 @@ export function Dashboard() {
       <NavBar />
 
       <form className="mt-20 w-1/2 mx-auto" onSubmit={handleSubmit}>
-        <h3 className="text-4xl uppercase mb-10"> Add New Products</h3>
+      <h1 className="text-3xl sm:text-5xl xl:text-6xl font-bold tracking-tight text-white"> Add New Products</h1>
         <Input
           name="name"
           className="mt-5"
@@ -188,7 +188,7 @@ export function Dashboard() {
           </Button>
         </div>
       </form>
-      <h3 className="text-2xl font-medium mb-4 mt-7">A List Of Products</h3>
+      <h3 className="text-2xl font-medium mb-4 mt-7  text-white">A List Of Products</h3>
 
       <Table className="text-center">
         <TableCaption></TableCaption>
@@ -198,7 +198,6 @@ export function Dashboard() {
             <TableHead>Price</TableHead>
             <TableHead>quantity</TableHead>
             <TableHead>CategryId</TableHead>
-            <TableHead>name</TableHead>
 
             <TableHead></TableHead>
           </TableRow>

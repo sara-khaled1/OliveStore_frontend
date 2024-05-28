@@ -45,7 +45,7 @@ export function Login() {
       const decodedToken = jwt(token)
       const user = reshapeUser(decodedToken)
       localStorage.setItem("token", token)
-      localStorage.setItem("user",  JSON.stringify(user))
+      localStorage.setItem("user", JSON.stringify(user))
 
       handlStoreUser(user)
       navigate("/")
@@ -54,7 +54,17 @@ export function Login() {
 
   return (
     <div>
-      <h3>Login</h3>
+      <h1
+        style={{
+          fontWeight: "bold",
+          fontSize: "55px",
+
+          fontFamily: "Arial, sans-serif",
+          color: "white"
+        }}
+      >
+        Login
+      </h1>
       <form className="w-full md:w-1/3 mx-auto" onSubmit={handleSubmit}>
         <Input
           name="email"

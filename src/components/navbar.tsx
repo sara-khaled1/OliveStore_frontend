@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import { useState } from "react"
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -29,118 +30,128 @@ export function NavBar() {
     handleRemoveUser()
   }
 
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen)
+  }
+
   return (
-    <div className="flex justify-between mb-20">
-      <h3>LOGO</h3>
-
-      <NavigationMenu>
-        <NavigationMenuList className="gap-4">
-          <NavigationMenuItem>
-            <Link to="/">
-              <NavigationMenuLink
-                style={{
-                  fontWeight: "bold",
-                  fontSize: "30px",
-                  fontFamily: "Arial, sans-serif",
-                  color: "white"
-                }}
-              >
-                {" "}
-                Home{" "}
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link to="/">
-              <NavigationMenuLink
-                style={{
-                  fontWeight: "bold",
-                  fontSize: "30px",
-                  fontFamily: "Arial, sans-serif",
-                  color: "white"
-                }}
-              >
-                {" "}
-                Contact Us
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link to="/about">
-              <NavigationMenuLink
-                style={{
-                  fontWeight: "bold",
-                  fontSize: "30px",
-                  fontFamily: "Arial, sans-serif",
-                  color: "white"
-                }}
-              >
-                About Us
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-          {state.user?.role === ROLE.Admin && (
-            <NavigationMenuItem
-              style={{
-                fontWeight: "bold",
-                fontSize: "30px",
-                fontFamily: "Arial, sans-serif",
-                color: "white"
-              }}
-            >
-              <Link to="/dashboard">
-                <NavigationMenuLink>Dashboard</NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-          )}
-          {!state.user && (
-            <NavigationMenuItem
-              style={{
-                fontWeight: "bold",
-                fontSize: "30px",
-                fontFamily: "Arial, sans-serif",
-                color: "white"
-              }}
-            >
-              <Link to="/signup">
-                <NavigationMenuLink
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: "30px",
-                    fontFamily: "Arial, sans-serif",
-                    color: "white"
-                  }}
-                >
-                  Signup
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-          )}
-          {!state.user && (
-            <NavigationMenuItem>
-              <Link to="/login">
-                <NavigationMenuLink
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: "30px",
-                    fontFamily: "Arial, sans-serif",
-                    color: "white"
-                  }}
-                >
-                  Login
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-          )}
-          {state.user && (
-            <Button variant="outline" onClick={handleLogout}>
-              Logout
-            </Button>
-          )}
-        </NavigationMenuList>
-      </NavigationMenu>
-
-      <Cart />
-    </div>
+    <nav className="fixed top-0 left-0 w-full bg-[#9eba6e] text-white py-4 px-8 z-10">
+      <div className="container mx-auto flex justify-between items-center">
+        <div>
+          <img src="../Olive.png" alt="Logo" style={{ height: "90px", marginRight: "10px" }} />
+        </div>
+        <div className="hidden lg:block">
+          <NavigationMenu>
+            <NavigationMenuList className="flex gap-4">
+              <NavigationMenuItem>
+                <Link to="/">
+                  <NavigationMenuLink>Home</NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link to="/Connect">
+                  <NavigationMenuLink>Contact Us</NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link to="/about">
+                  <NavigationMenuLink>About Us</NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+              {state.user?.role === ROLE.Admin && (
+                <NavigationMenuItem>
+                  <Link to="/dashboard">
+                    <NavigationMenuLink>Dashboard</NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              )}
+              {!state.user && (
+                <NavigationMenuItem>
+                  <Link to="/signup">
+                    <NavigationMenuLink>Signup</NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              )}
+              {!state.user && (
+                <NavigationMenuItem>
+                  <Link to="/login">
+                    <NavigationMenuLink>Login</NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              )}
+              {state.user && (
+                <Button variant="outline" onClick={handleLogout}>
+                  Logout
+                </Button>
+              )}
+            </NavigationMenuList>
+          </NavigationMenu>
+        </div>
+        <Cart />
+        <div className="block lg:hidden">
+          <button className="text-white focus:outline-none" onClick={toggleMenu}>
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16m-7 6h7"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      {menuOpen && (
+        <div className="bg-[#9eba6e] py-4">
+          <NavigationMenu>
+            <NavigationMenuList className="flex flex-col gap-4">
+              <NavigationMenuItem>
+                <Link to="/">
+                  <NavigationMenuLink onClick={toggleMenu}>Home</NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link to="/Connect">
+                  <NavigationMenuLink onClick={toggleMenu}>Contact Us</NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link to="/about">
+                  <NavigationMenuLink onClick={toggleMenu}>About Us</NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+              {state.user?.role === ROLE.Admin && (
+                <NavigationMenuItem>
+                  <Link to="/dashboard">
+                    <NavigationMenuLink onClick={toggleMenu}>Dashboard</NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              )}
+              {!state.user && (
+                <NavigationMenuItem>
+                  <Link to="/signup">
+                    <NavigationMenuLink onClick={toggleMenu}>Signup</NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              )}
+              {!state.user && (
+                <NavigationMenuItem>
+                  <Link to="/login">
+                    <NavigationMenuLink onClick={toggleMenu}>Login</NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              )}
+              {state.user && (
+                <Button variant="outline" onClick={handleLogout}>
+                  Logout
+                </Button>
+              )}
+            </NavigationMenuList>
+          </NavigationMenu>
+        </div>
+      )}
+    </nav>
   )
 }

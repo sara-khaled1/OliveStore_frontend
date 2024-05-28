@@ -1,46 +1,25 @@
-import { Button } from "./ui/button"
-
 export function Hero() {
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
-      <div className="container px-4 md:px-6">
-        <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-          <img
-            alt="Hero"
-            className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
-            height="310"
-            src="/hero.jpg"
-            width="550"
-          />
-          <img
-            alt="Hero"
-            className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
-            height="310"
-            src="/hero1.jpg"
-            width="550"
-          />
-
-          <div className="flex flex-col justify-center space-y-7">
-            <div className="space-y-2">
-              <h1
-                style={{
-                  fontWeight: "bold",
-
-                  fontFamily: "Arial, sans-serif",
-                  color: "white"
-                }}
-                className=" font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
-              >
-                Welcome to Olive
-              </h1>
-              <p className="max-w-[600px] md:text-xl">
-                your top choice for organic olive products from Al-Jouf, northern Saudi Arabia. We
-                offer premium quality olives and olive oil, grown and harvested using organic
-                farming practices.
-              </p>
-              <Button>Get Prodcts</Button>
-            </div>
-            <div className="w-full max-w-sm space-y-2"></div>
+    <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 text-white">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+          <div className="text-center lg:text-left">
+            <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold mb-6">Welcome to Olive</h1>
+            <p className="text-lg md:text-xl mb-8 max-w-lg mx-auto md:mx-0">
+              Your top choice for organic olive products from Al-Jouf, northern Saudi Arabia. We
+              offer premium quality olives and olive oil, grown and harvested using organic farming
+              practices.
+            </p>
+            <button className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full text-sm md:text-base hover:bg-white hover:text-gray-900 hover:border-gray-900 transition duration-300 ease-in-out">
+              Get Started
+            </button>
+          </div>
+          <div className="lg:order-last">
+            <img
+              alt="Hero"
+              className="rounded-xl object-cover object-center w-full h-full"
+              src="/hero.jpg"
+            />
           </div>
         </div>
       </div>

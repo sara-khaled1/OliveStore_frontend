@@ -44,7 +44,17 @@ export function Singnup() {
 
   return (
     <div>
-      <h3>Singnup</h3>
+      <h3
+        style={{
+          fontWeight: "bold",
+          fontSize: "55px",
+
+          fontFamily: "Arial, sans-serif",
+          color: "white"
+        }}
+      >
+        Singnup
+      </h3>
       <form onSubmit={handleSubmit} className="w-full md:w-1/3 mx-auto">
         <Input
           name="fullName"
@@ -75,9 +85,7 @@ export function Singnup() {
           onChange={handlChange}
         />
         <div className="w-full md:w-1/3 mx-auto">
-          <Button variant="link" className="mt-4">
-            -----{" "}
-          </Button>
+        
           <Button type="submit" className=" mt-4">
             Sign up
           </Button>

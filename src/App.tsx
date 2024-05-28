@@ -3,14 +3,14 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import "./App.css"
 import Dashboard from "./Pages/Dashboard"
 import { Home } from "./Pages/Home"
-import { createContext,  useState } from "react"
+import { createContext, useState } from "react"
 import { DecodedUser, Product } from "./types"
 import { ProductDetails } from "./Pages/ProductDetails"
 import { Login } from "./Pages/Login"
 import { Singnup } from "./Pages/Signup"
 import { PrivateRoute } from "./components/privateRoute"
 import About from "./Pages/AboutUs"
-
+import Connect from "./Pages/Connect"
 
 const router = createBrowserRouter([
   {
@@ -40,11 +40,12 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <Singnup />
+  },
 
-    
-  } ,
-
-
+  {
+    path: "/Connect",
+    element: <Connect />
+  }
 ])
 
 type GlobalContextType = {
@@ -68,7 +69,6 @@ function App() {
     user: null
   })
 
-  
   const handleRemoveCart = () => {
     setState({
       ...state,
@@ -76,7 +76,6 @@ function App() {
     })
   }
   const handleAddToCart = (product: Product) => {
-    
     setState({
       ...state,
       cart: [...state.cart, product]

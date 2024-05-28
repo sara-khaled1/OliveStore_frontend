@@ -45,7 +45,6 @@ export function Cart() {
     })
   })
 
-  console.log("checkoutOrder:", checkoutOrder)
   const handleCheckout = async () => {
     try {
       const token = localStorage.getItem("token")
@@ -68,8 +67,8 @@ export function Cart() {
     <Popover>
       <PopoverTrigger asChild>
         <div className="flex gap-1">
-          <ShoppingCart className="cursor-pointer" />
-          <span>({Object.keys(groups).length})</span>
+          <ShoppingCart   style={{ color: "white" }}  className="cursor-pointer " />
+          <span  style={{ color: "white" }} >({Object.keys(groups).length})</span>
         </div>
       </PopoverTrigger>
       <PopoverContent className="w-300">
@@ -82,14 +81,14 @@ export function Cart() {
               return acc + curr.price
             }, 0)
             return (
-              <div className="mb-4 flex items-center gap-4" key={product.id}>
+              <div className=" colermb-4 flex items-center gap-4" key={product.id}>
                 <img src={product.image} alt={product.name} className="w-10 h-10 object-contain" />
                 <h4>{product.name}</h4>
                 <span className="font-bold">{total}</span>
                 <Button variant="outline" onClick={() => handleDeleteFromCart(product.id)}>
                   -
                 </Button>
-                <span className="font-bold">({products.length})</span>
+                <span  className="font-bold">({products.length})</span>
 
                 <Button variant="outline" onClick={() => handleAddToCart(product)}>
                   +

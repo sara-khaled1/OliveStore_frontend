@@ -21,7 +21,6 @@ export function ProductDetails() {
 
   const {
     data: product,
-    error,
     isLoading
   } = useQuery<Product>({
     queryKey: ["product"],
