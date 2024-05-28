@@ -18,7 +18,7 @@ export function Hero() {
             <img
               alt="Hero"
               className="rounded-xl object-cover object-center w-full h-full"
-              src="/hero.jpg"
+              src="../hero.jpg"
             />
           </div>
         </div>
