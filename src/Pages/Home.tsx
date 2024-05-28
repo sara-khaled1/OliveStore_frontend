@@ -47,8 +47,10 @@ export function Home() {
 
   return (
     <>
+    
       <NavBar />
       <Hero />
+      
       <div>
         <form className=" flex gap-4 w-full md:1/2 mx-auto mb-10" onSubmit={handleSearch}>
           <Input type="search" placeholder="Search for a products" onChange={handleChange} />
