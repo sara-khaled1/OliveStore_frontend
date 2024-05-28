@@ -1,5 +1,5 @@
-import { Footer } from "@/components/footer";
-import { NavBar } from "@/components/navbar";
+import { Footer } from "@/components/footer"
+import { NavBar } from "@/components/navbar"
 
 export default function About() {
   return (
@@ -25,7 +25,7 @@ export default function About() {
               <img
                 alt="About Us"
                 className="rounded-xl object-cover w-full h-auto lg:max-w-md"
-                src="about.jpg"
+                src="../about.jpg"
               />
             </div>
           </div>
@@ -35,5 +35,3 @@ export default function About() {
     </>
   )
 }
-
-
