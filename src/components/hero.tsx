@@ -17,7 +17,7 @@ export function Hero() {
           <div className="lg:order-last">
             <img
               alt="Hero"
-              className="rounded-xl object-cover object-center w-full h-full"
+              className="rounded-xl object-cover object-center w-full h-full "
               src="../hero.jpg"
             />
           </div>

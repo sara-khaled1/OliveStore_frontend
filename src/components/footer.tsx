@@ -1,24 +1,40 @@
-import { Instagram } from "lucide-react";
-
 export function Footer() {
   return (
-    <>
-      <footer className="mt-44 text-white py-4">
-        <div className="container mx-auto text-center">
-          <p>&copy; By Sarah Almadouh 2024 </p>
-          <div className="flex justify-center space-x-4 mt-2">
-            <a
-              href="https://www.instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-gray-400"
-            >
-              <Instagram></Instagram>
+    <footer className=" bg-[#9eba6e] text-white py-8">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="mb-4 md:mb-0">
+            <h5 className="text-xl font-bold">The Olive</h5>
+            <p className="text-sm">© 2024 By Sarah Almaduh. All rights reserved.</p>
+          </div>
+          <div className="flex space-x-4">
+            <a href="#" className="text-white hover:text-gray-400">
+              About
+            </a>
+
+            <a href="#" className="text-white hover:text-gray-400">
+              Contact
             </a>
           </div>
-        
+          <div className="flex space-x-4 mt-4 md:mt-0">
+            <a href="#" className="text-white hover:text-gray-400">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.477 2 2 6.477 2 12c0 4.99 3.657 9.128 8.437 9.878v-6.988h-2.54v-2.89h2.54V9.659c0-2.507 1.493-3.89 3.777-3.89 1.093 0 2.239.195 2.239.195v2.466h-1.26c-1.242 0-1.626.772-1.626 1.563v1.854h2.773l-.444 2.89h-2.329v6.988C18.343 21.128 22 16.99 22 12c0-5.523-4.477-10-10-10z" />
+              </svg>
+            </a>
+            <a href="#" className="text-white hover:text-gray-400">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c-5.509 0-9.93 4.421-9.93 9.93 0 4.385 2.856 8.103 6.84 9.425-.094-.8-.177-2.03.037-2.911.202-.816 1.298-5.197 1.298-5.197s-.331-.665-.331-1.646c0-1.538.892-2.688 2.002-2.688.944 0 1.399.71 1.399 1.562 0 .952-.606 2.376-.918 3.697-.261 1.106.552 2.008 1.637 2.008 1.964 0 3.471-2.071 3.471-5.057 0-2.641-1.897-4.494-4.594-4.494-3.129 0-4.964 2.352-4.964 4.776 0 .945.363 1.963.82 2.514.091.11.105.207.08.317-.087.346-.284 1.107-.322 1.258-.05.205-.162.25-.374.152-1.4-.638-2.277-2.642-2.277-4.246 0-3.45 2.558-6.616 7.37-6.616 3.87 0 6.877 2.76 6.877 6.452 0 3.848-2.428 6.95-5.797 6.95-1.133 0-2.199-.59-2.56-1.28l-.692 2.642c-.25.963-.934 2.162-1.394 2.895C9.603 23.474 10.783 24 12 24c5.509 0 9.93-4.421 9.93-9.93 0-5.509-4.421-9.93-9.93-9.93z" />
+              </svg>
+            </a>
+            <a href="#" className="hover:text-gray-400">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c-5.509 0-9.93 4.421-9.93 9.93 0 4.385 2.856 8.103 6.84 9.425-.094-.8-.177-2.03.037-2.911.202-.816 1.298-5.197 1.298-5.197s-.331-.665-.331-1.646c0-1.538.892-2.688 2.002-2.688.944 0 1.399.71 1.399 1.562 0 .952-.606 2.376-.918 3.697-.261 1.106.552 2.008 1.637 2.008 1.964 0 3.471-2.071 3.471-5.057 0-2.641-1.897-4.494-4.594-4.494-3.129 0-4.964 2.352-4.964 4.776 0 .945.363 1.963.82 2.514.091.11.105.207.08.317-.087.346-.284 1.107-.322 1.258-.05.205-.162.25-.374.152-1.4-.638-2.277-2.642-2.277-4.246 0-3.45 2.558-6.616 7.37-6.616 3.87 0 6.877 2.76 6.877 6.452 0 3.848-2.428 6.95-5.797 6.95-1.133 0-2.199-.59-2.56-1.28l-.692 2.642c-.25.963-.934 2.162-1.394 2.895C9.603 23.474 10.783 24 12 24c5.509 0 9.93-4.421 9.93-9.93 0-5.509-4.421-9.93-9.93-9.93z" />
+              </svg>
+            </a>
+          </div>
         </div>
-      </footer>
-    </>
+      </div>
+    </footer>
   )
 }
